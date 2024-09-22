@@ -1,7 +1,6 @@
 package routes
 
 import (
-	"fmt"
 	"net/http"
 
 	"github.com/gorilla/mux"
@@ -9,6 +8,7 @@ import (
 
 	"github.com/anisbhsl/fetch-backend-assignment/api/index"
 	"github.com/anisbhsl/fetch-backend-assignment/api/receipts"
+	"github.com/anisbhsl/fetch-backend-assignment/utils"
 )
 
 var httpMethods = struct {
@@ -70,7 +70,7 @@ var routes = func(
 func RegisterRoutes(indexApiService index.Service,
 	receiptsApiService receipts.Service) http.Handler {
 
-	fmt.Println("registering API routes.....")
+	utils.GetLogger().Info("registering API routes.....")
 
 	r := mux.NewRouter().PathPrefix("/api/v1").Subrouter()
 

@@ -1,13 +1,19 @@
 package utils
 
 import (
+	"sync"
+
 	"github.com/anisbhsl/fetch-backend-assignment/models"
 	"github.com/go-playground/validator/v10"
 )
 
-var validate *validator.Validate
+var (
+	validate     *validator.Validate
+	validateOnce sync.Once
+)
 
-func RegisterValidator() {
+// registerValidator registers all the custom validators
+func registerValidator() {
 	validate = validator.New(validator.WithRequiredStructEnabled())
 
 	// register all custom validators
@@ -17,6 +23,8 @@ func RegisterValidator() {
 	validate.RegisterValidation("validateReceiptItemPrice", models.ValidateReceiptItemPrice)
 }
 
+// GetValidator returns an instance of a validator
 func GetValidator() *validator.Validate {
+	validateOnce.Do(registerValidator)
 	return validate
 }

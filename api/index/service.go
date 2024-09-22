@@ -6,6 +6,7 @@ type Service interface {
 	Index() http.HandlerFunc
 }
 
+// service implements Index Service interface
 type service struct {
 }
 

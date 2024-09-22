@@ -10,6 +10,7 @@ import (
 	"github.com/anisbhsl/fetch-backend-assignment/routes"
 	"github.com/anisbhsl/fetch-backend-assignment/store"
 	"github.com/anisbhsl/fetch-backend-assignment/utils"
+	"go.uber.org/zap"
 )
 
 var (
@@ -39,15 +40,16 @@ func NewExecutor(config *utils.AppConfig) *Executor {
 // at specified port
 func (e *Executor) Execute() {
 	// spin up the http server
+	address := fmt.Sprintf("%s:%s", e.Config.HostAddr, e.Config.Port)
 	srv := &http.Server{
-		Addr:         fmt.Sprintf("%s:%s", e.Config.HostAddr, e.Config.Port),
+		Addr:         address,
 		ReadTimeout:  timeout,
 		WriteTimeout: timeout,
 		IdleTimeout:  timeout,
 		Handler:      routes.RegisterRoutes(e.IndexAPIService, e.ReceiptsAPIService),
 	}
 
-	fmt.Println("server listening....") //todo: change this to logger
+	utils.GetLogger().Info("server listening....", zap.String("address", address))
 	if err := srv.ListenAndServe(); err != nil {
 		panic(err)
 	}

@@ -11,6 +11,7 @@ type Service interface {
 	ProcessReceiptPoints() http.HandlerFunc
 }
 
+// service implements receipt Service interface
 type service struct {
 	db store.Service
 }

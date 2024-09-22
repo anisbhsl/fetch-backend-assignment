@@ -5,6 +5,7 @@ import (
 	"net/http"
 )
 
+// Index is http handler for "/" endpoint
 func (s service) Index() http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Content-Type", "application/json")

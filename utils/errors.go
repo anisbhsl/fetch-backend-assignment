@@ -5,6 +5,7 @@ import (
 	"net/http"
 )
 
+// SendErrorResponse is a wrraper to send error response
 func SendErrorResponse(w http.ResponseWriter, errorMessage interface{}, statusCode int) {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(statusCode)
@@ -14,13 +15,9 @@ func SendErrorResponse(w http.ResponseWriter, errorMessage interface{}, statusCo
 	})
 }
 
+// SendSuccessResponse is a wrapper to send 200 response
 func SendSuccessResponse(w http.ResponseWriter, data interface{}) {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
 	json.NewEncoder(w).Encode(data)
-}
-
-func SendUnauthorizedResponse(w http.ResponseWriter) {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(http.StatusUnauthorized)
 }

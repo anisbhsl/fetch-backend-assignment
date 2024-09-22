@@ -1,18 +1,25 @@
-Requirements:
+Fetch Backend Assignment
+----
 
-Design API endpoints:
+This assignment consists of two endpoints to process a receipt and calculate its point. The original repo is [here](https://github.com/fetch-rewards/receipt-processor-challenge).
 
-- `/receipts/process`
-POST
-Payload: JSON
-response: JSON containing id for the receipt
+### To Run?
 
-use UUID for the ID
+```
+make run-app
+```
 
-- The ID returned will be passed into `/receipts/{id}/points` to get the number of points the receipt was awarded
-GET
-response: JSON object containing the number of points awarded
+The app will run at `localhost:3000`
 
-Can use in-memory database
+### To test
 
-There are rules to define how many points should be awarded to a receipt
+```
+make test
+```
+
+## Endpoints Available
+
+| Endpoint | Method | Desc |
+|----------|--------|--------|
+| `/api/v1/receipts` | `Post` | stores a given receipt payload |
+| `/api/v1/receipts/{id}/points` | `Get` | calculates the points for given receipt id|

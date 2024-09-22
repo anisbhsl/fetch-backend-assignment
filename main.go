@@ -7,10 +7,6 @@ import (
 	"github.com/anisbhsl/fetch-backend-assignment/utils"
 )
 
-func init() {
-	utils.RegisterValidator()
-}
-
 func main() {
 	host := flag.String("host", "127.0.0.1", "host address")
 	port := flag.String("port", "3000", "port to listen to")
