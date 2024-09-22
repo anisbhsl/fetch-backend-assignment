@@ -5,10 +5,18 @@ import (
 	"github.com/go-playground/validator/v10"
 )
 
-var Validate *validator.Validate
+var validate *validator.Validate
 
-// calculatePoints performs calculation of points for a given
-// receipt
-func calculatePoints(receipt models.Receipt) int {
-	return 0
+func RegisterValidator() {
+	validate = validator.New(validator.WithRequiredStructEnabled())
+
+	// register all custom validators
+	validate.RegisterValidation("validateRetailer", models.ValidateRetailer)
+	validate.RegisterValidation("validateReceiptTotal", models.ValidateReceiptTotal)
+	validate.RegisterValidation("validateReceiptItemShortDesc", models.ValidateReceiptItemShortDesc)
+	validate.RegisterValidation("validateReceiptItemPrice", models.ValidateReceiptItemPrice)
+}
+
+func GetValidator() *validator.Validate {
+	return validate
 }

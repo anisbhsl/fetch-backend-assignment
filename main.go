@@ -5,11 +5,10 @@ import (
 
 	"github.com/anisbhsl/fetch-backend-assignment/executor"
 	"github.com/anisbhsl/fetch-backend-assignment/utils"
-	"github.com/go-playground/validator/v10"
 )
 
 func init() {
-	utils.Validate = validator.New(validator.WithRequiredStructEnabled())
+	utils.RegisterValidator()
 }
 
 func main() {
