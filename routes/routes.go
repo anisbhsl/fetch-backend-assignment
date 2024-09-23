@@ -43,7 +43,7 @@ var routes = func(
 	}
 
 	RECEIPTS := map[string]routeConfig{
-		"/receipts": {
+		"/receipts/process": {
 			Handler:     receiptsApiService.ProcessReceipts(),
 			Methods:     []string{httpMethods.POST},
 			Middlewares: nil,

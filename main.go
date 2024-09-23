@@ -8,7 +8,7 @@ import (
 )
 
 func main() {
-	host := flag.String("host", "127.0.0.1", "host address")
+	host := flag.String("host", "0.0.0.0", "host address")
 	port := flag.String("port", "3000", "port to listen to")
 	flag.Parse()
 

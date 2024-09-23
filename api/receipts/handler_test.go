@@ -13,7 +13,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-var PROCESS_RECEIPTS_ENDPOINT = "/api/v1/receipts"
+var PROCESS_RECEIPTS_ENDPOINT = "/api/v1/receipts/process"
 
 // TestProcessReceiptsNilItems tests by removing items from the payload
 // to check if validator catches it or not.

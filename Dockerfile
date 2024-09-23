@@ -10,5 +10,5 @@ RUN CGO_ENABLED=0 GOOS=linux go build -o /fetch-app main.go
 FROM alpine:latest
 WORKDIR /root/
 COPY --from=builder /fetch-app .
-EXPOSE 5000
-CMD ["./fetch-app", "--port", "5000"]
+EXPOSE 3000
+CMD ["./fetch-app"]
