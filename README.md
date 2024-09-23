@@ -48,6 +48,6 @@ make test
 
 1. This webservice has been written in `Go` using `net/http` and `mux` as router.
 2. Data is persisted in-memory using a simple key-value implementation.
-3. Each endpoint handler follows request validation, business logic implementation and response components.
+3. Each endpoint handler follows request validation, business logic implementation and response components. Custom validators have been defined for some fields.
 4. Routes are grouped together in `routes/routes.go` making it easier to navigate and maintain consistency.
 5. Logging is done for each request using `zap` logger.
